@@ -1,6 +1,4 @@
-# iex -S mix
-#  StreamReader.start_link("http://localhost:4000/tweets/1")
-defmodule Week2.StreamReader do
+defmodule Week3.StreamReader do
   use GenServer
   require Logger
 
@@ -16,14 +14,16 @@ defmodule Week2.StreamReader do
 
   def handle_info(%HTTPoison.AsyncChunk{chunk: chunk}, _state) do
     # process_event(chunk)
+
     case chunk do
+
       "event: \"message\"\n\ndata: {\"message\": panic}\n\n" ->
-        Week2.LoadBalancer.print_tweets({:kill, "kill message"})
+        Week3.LoadBalancer.print_tweets({:kill, "kill message"})
 
       "event: \"message\"\n\ndata: " <> message ->
-        Week2.LoadBalancer.print_tweets(message)
+        Week3.LoadBalancer.print_tweets(message)
 
-      "" -> Week2.LoadBalancer.print_tweets("")
+      "" -> Week3.LoadBalancer.print_tweets("")
 
     end
 

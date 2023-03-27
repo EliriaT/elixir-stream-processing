@@ -1,0 +1,5 @@
+// average requests per node
+// requests / nr noduri
+// daca numarul e mai mare decat eu dorect de exemplu 10 r per node
+// supervisorul un worker cu id noul
+

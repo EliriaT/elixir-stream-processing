@@ -35,8 +35,8 @@ defmodule Week2.LoadBalancer do
     # workerID = getIDByRoundRobinLB(nrWorker)
 
     {workerID, loadsMap} = getIDByLeastRequestLB(elem(state, 1))
-  
 
+    # IO.puts(workerID)
     Week2.PrinterSupervisor.sendToPrinterX(workerID, chunk)
 
     {:noreply, {workerID, loadsMap}}

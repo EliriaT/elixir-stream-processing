@@ -1,5 +1,5 @@
 defmodule Week2.Printer do
-  use GenServer
+  use GenServer, restart: :permanent
   require Logger
 
   @minSleepTime 5
@@ -37,8 +37,9 @@ defmodule Week2.Printer do
     if success == :ok do
       tweet = data["message"]["tweet"]
       text = tweet["text"]
+      r = filter_bad_words(text)
       IO.puts("\n\n")
-      IO.puts(text)
+      IO.puts(r)
       IO.puts("\n")
 
       hashtags = tweet["entities"]["hashtags"]
@@ -52,5 +53,11 @@ defmodule Week2.Printer do
   defp sleep() do
     sleep_time = :rand.uniform(@maxSleepTime - @minSleepTime) + @minSleepTime
     :timer.sleep(sleep_time)
+  end
+
+  defp filter_bad_words(msg) do
+    msg = URI.encode(msg)
+    response = HTTPoison.get!("https://www.purgomalum.com/service/plain?text=#{msg}")
+    Map.get(response,:body)
   end
 end
