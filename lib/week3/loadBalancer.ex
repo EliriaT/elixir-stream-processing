@@ -60,7 +60,7 @@ defmodule Week3.LoadBalancer do
     IO.puts("\n\n")
     IO.puts("Current nr workers: #{length(Map.keys(nodeLoads))}")
     IO.puts("\n\n")
-    # IO.inspect(nodeLoads)
+    IO.inspect(nodeLoads)
     IO.puts("\n\n")
     IO.puts(averageRequests)
     IO.puts("\n\n")

@@ -27,9 +27,14 @@ defmodule Week3.PrinterSupervisor do
   def sendToPrinterX(uuid, chunk)  do
     # check if such  child with such uuid exists, if not, the child is created, initially load balancer creates 3 children
 
-    children =
-      Supervisor.which_children(__MODULE__)
-      |> Enum.find(fn {id, _, _, _} -> id == uuid end)
+    # children =
+    #   Supervisor.which_children(__MODULE__)
+    #   |> Enum.find(fn {id, _, _, _} -> id == uuid end)
+
+    # IO.inspect( Supervisor.which_children(__MODULE__))
+    # IO.inspect(children)
+
+    children =  Process.whereis(String.to_atom(uuid))
 
     if children==nil do
       Week3.PrinterSupervisor.start_new_child(uuid)
