@@ -56,7 +56,7 @@ defmodule Week6.Batcher do
   def print_batch(state) do
 
 
-    state = if Process.alive?(Process.whereis(__MODULE__)) do
+    state = if Process.alive?(Process.whereis(Week6.TweetDb)) do
       IO.puts(
         "\n\n----------------------------------------------------------------------------------------------------\n\n"
       )
