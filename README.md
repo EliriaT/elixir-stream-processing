@@ -13,7 +13,7 @@ Run the entire mix project in shell:
 or
 
 Run the main script:
-`mix run lib/week2/main.exs`
+`mix run lib/week6/main.exs`
 
 ## Installation
 

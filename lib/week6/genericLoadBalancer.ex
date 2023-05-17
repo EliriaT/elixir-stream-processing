@@ -6,7 +6,7 @@ defmodule Week6.GenericLoadBalancer do
   @max_requests_per_node 1000
   @min_requests_per_node 50
   @min_workers 5
-  @max_workers 15
+  @max_workers 7
 
 
   def start_link(arg) do

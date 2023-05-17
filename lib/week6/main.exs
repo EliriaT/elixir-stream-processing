@@ -15,6 +15,8 @@ Week6.Batcher.start_link()
 
 Week6.Aggregator.start_link()
 
+Week6.CDCConverter.start_link()
+
 Week6.TweetDb.start_link()
 
 # Each pool formed out of LB and PS is supervised one for all

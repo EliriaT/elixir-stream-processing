@@ -1,7 +1,7 @@
 defmodule Week6.TweetDb do
   use GenServer
 
-  @time 5000
+  @time 1000
   # tweetID engagement sentiment redacted UserID
   # userID userName
 
@@ -47,6 +47,8 @@ defmodule Week6.TweetDb do
          | tweetList
        ]}
     )
+
+    Week6.CDCConverter.publishTweet( tweetID, engagement, sentiment, cleaned, userID)
 
     {:noreply, ets_table}
   end
